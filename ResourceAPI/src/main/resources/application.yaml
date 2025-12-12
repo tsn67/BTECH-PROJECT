@@ -1,0 +1,6 @@
+
+spring:
+  application:
+    name: ResourceAPI
+server:
+  port: 8081
