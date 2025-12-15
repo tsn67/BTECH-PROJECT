@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="containerPane" prefHeight="106.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hats.medivaultclientfrontend.view_2.DownloadUiController">
+   <children>
+      <Label fx:id="taskName" layoutX="46.0" layoutY="16.0" prefHeight="26.0" prefWidth="635.0" text="Task Id, Task Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Circle fx:id="indexCircle" fill="#767373" layoutX="25.0" layoutY="28.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ProgressBar fx:id="downloadProgress" layoutX="46.0" layoutY="45.0" prefHeight="26.0" prefWidth="516.0" progress="0.0" />
+      <Label fx:id="downloadStatus" layoutX="46.0" layoutY="76.0" prefHeight="26.0" prefWidth="635.0" text="Task Id, Task Name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="statusRect" arcHeight="5.0" arcWidth="5.0" fill="#767373" height="106.0" layoutX="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="9.0" />
+      <Label fx:id="indexLabel" layoutX="21.0" layoutY="18.0" text="0" />
+   </children>
+</AnchorPane>
