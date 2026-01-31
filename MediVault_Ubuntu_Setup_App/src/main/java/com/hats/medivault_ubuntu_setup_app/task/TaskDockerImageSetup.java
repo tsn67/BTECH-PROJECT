@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TaskDockerImageSetup extends Task {
+
     private static final String DOWNLOAD_OUT_DIR_PATH = "./data/images";
     private static final int STREAMLINE_BUFFER_SIZE = 8192;
 
@@ -25,16 +26,16 @@ public class TaskDockerImageSetup extends Task {
 
             final String ipfs_image_url =
                     ResourceStrings.RESOURCE_API_URL + "/"
-                            + ResourceStrings.IPFS_DOCKER_IMAGE_NAME;
+                            + ResourceStrings.IPFS_DOCKER_IMAGE_ZIP_NAME;
 
             final String geth_image_url =
                     ResourceStrings.RESOURCE_API_URL + "/"
-                            + ResourceStrings.GETH_DOCKER_IMAGE_NAME;
+                            + ResourceStrings.GETH_DOCKER_IMAGE_ZIP_NAME;
 
-            notifyTaskObservers(TaskUpdate.TASK_INTERNAL_WORK, "downloading " + ResourceStrings.IPFS_DOCKER_IMAGE_NAME);
-            downloadDockerImage(ipfs_image_url, ResourceStrings.IPFS_DOCKER_IMAGE_NAME);
-            notifyTaskObservers(TaskUpdate.TASK_INTERNAL_WORK, "downloading " + ResourceStrings.GETH_DOCKER_IMAGE_NAME);
-            downloadDockerImage(geth_image_url, ResourceStrings.GETH_DOCKER_IMAGE_NAME);
+            notifyTaskObservers(TaskUpdate.TASK_INTERNAL_WORK, "downloading " + ResourceStrings.IPFS_DOCKER_IMAGE_ZIP_NAME);
+            downloadDockerImage(ipfs_image_url, ResourceStrings.IPFS_DOCKER_IMAGE_ZIP_NAME);
+            notifyTaskObservers(TaskUpdate.TASK_INTERNAL_WORK, "downloading " + ResourceStrings.GETH_DOCKER_IMAGE_ZIP_NAME);
+            downloadDockerImage(geth_image_url, ResourceStrings.GETH_DOCKER_IMAGE_ZIP_NAME);
 
             notifyTaskObservers(TaskUpdate.TASK_SUCCESS, "download complete");
 
@@ -63,8 +64,8 @@ public class TaskDockerImageSetup extends Task {
 
         // load docker images (into docker storage)
         try {
-            Path ipfsImagePath = Paths.get(DOWNLOAD_OUT_DIR_PATH + "/" + ResourceStrings.IPFS_DOCKER_IMAGE_NAME);
-            Path gethImagePath = Paths.get(DOWNLOAD_OUT_DIR_PATH + "/" + ResourceStrings.GETH_DOCKER_IMAGE_NAME);
+            Path ipfsImagePath = Paths.get(DOWNLOAD_OUT_DIR_PATH + "/" + ResourceStrings.IPFS_DOCKER_IMAGE_ZIP_NAME);
+            Path gethImagePath = Paths.get(DOWNLOAD_OUT_DIR_PATH + "/" + ResourceStrings.GETH_DOCKER_IMAGE_ZIP_NAME);
 
             loadDockerImage(ipfsImagePath);
             loadDockerImage(gethImagePath);
@@ -139,9 +140,8 @@ public class TaskDockerImageSetup extends Task {
     }
 
     private void loadDockerImage(Path tarPath) throws Exception {
-        //TODO: sudo or pkexec (both) can be removed later
         ProcessBuilder pb = new ProcessBuilder(
-                "pkexec", "docker", "load", "-i", tarPath.toAbsolutePath().toString()
+                "docker", "load", "-i", tarPath.toAbsolutePath().toString()
         );
 
         pb.redirectErrorStream(true);

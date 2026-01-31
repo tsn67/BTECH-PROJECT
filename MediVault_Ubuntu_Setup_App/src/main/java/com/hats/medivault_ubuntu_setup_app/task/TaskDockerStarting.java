@@ -4,9 +4,6 @@ import com.hats.medivault_ubuntu_setup_app.ResourceStrings;
 
 import java.util.function.BiConsumer;
 
-/**
-* Task Docker starting
-* */
 public class TaskDockerStarting extends Task {
     private final BiConsumer<TaskUpdate, String> commandResponseCallBack = this::notifyTaskObservers;
 
@@ -48,7 +45,7 @@ public class TaskDockerStarting extends Task {
     private void startDockerService() throws Exception {
         // change this to systemctl start..., before creating installer
         // installed app will have sudo privileges
-        TaskSubCommandRunner.runCommand("pkexec systemctl start docker", commandResponseCallBack);
+        TaskSubCommandRunner.runCommand("systemctl start docker", commandResponseCallBack);
     }
 
     private boolean isDockerRunning() throws Exception {

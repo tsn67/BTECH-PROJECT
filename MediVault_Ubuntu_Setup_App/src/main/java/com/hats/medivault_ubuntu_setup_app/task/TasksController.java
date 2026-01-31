@@ -11,14 +11,17 @@ public class TasksController implements TaskObserver, Initializable {
         Task task1 = new TaskDockerInstallation();
         Task task2 = new TaskDockerStarting();
         Task task3 = new TaskDockerImageSetup();
+        Task task4 = new TaskContainerStart();
 
         task1.setNextTask(task2);
         task2.setNextTask(task3);
-        task3.setNextTask(null);
+        task3.setNextTask(task4);
+        task4.setNextTask(null);
 
         task1.addTaskObserver(this);
         task2.addTaskObserver(this);
         task3.addTaskObserver(this);
+        task4.addTaskObserver(this);
 
         //only task1 need to be started
         //on success it will start the next task
