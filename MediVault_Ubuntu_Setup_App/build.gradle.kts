@@ -25,6 +25,10 @@ tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
 
+tasks.withType<JavaExec>().configureEach {
+    standardInput = System.`in`
+}
+
 application {
     mainModule.set("com.hats.medivault_ubuntu_setup_app")
     mainClass.set("com.hats.medivault_ubuntu_setup_app.HelloApplication")
