@@ -1,4 +1,4 @@
-package com.hats.medivault_ubuntu_setup_app.tasks;
+package com.hats.medivault_ubuntu_setup_app.task;
 
 import com.hats.medivault_ubuntu_setup_app.ResourceStrings;
 
@@ -31,6 +31,7 @@ public class TaskDockerStarting extends Task {
             }
 
             notifyTaskObservers(TaskUpdate.TASK_SUCCESS, "Docker engine started");
+            startNextTask();
         } catch (Exception e) {
             notifyTaskObservers(
                     TaskUpdate.TASK_FAILED,

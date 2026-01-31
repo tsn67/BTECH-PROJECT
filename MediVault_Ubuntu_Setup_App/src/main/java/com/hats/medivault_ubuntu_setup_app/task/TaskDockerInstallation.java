@@ -1,4 +1,4 @@
-package com.hats.medivault_ubuntu_setup_app.tasks;
+package com.hats.medivault_ubuntu_setup_app.task;
 
 import com.hats.medivault_ubuntu_setup_app.ResourceStrings;
 

@@ -1,4 +1,4 @@
-package com.hats.medivault_ubuntu_setup_app.tasks;
+package com.hats.medivault_ubuntu_setup_app.task;
 
 import javafx.fxml.Initializable;
 
@@ -10,12 +10,15 @@ public class TasksController implements TaskObserver, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Task task1 = new TaskDockerInstallation();
         Task task2 = new TaskDockerStarting();
+        Task task3 = new TaskDockerImageSetup();
 
         task1.setNextTask(task2);
-        task2.setNextTask(null);
+        task2.setNextTask(task3);
+        task3.setNextTask(null);
 
         task1.addTaskObserver(this);
         task2.addTaskObserver(this);
+        task3.addTaskObserver(this);
 
         //only task1 need to be started
         //on success it will start the next task

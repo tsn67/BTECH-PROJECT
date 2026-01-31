@@ -6,6 +6,6 @@ module com.hats.medivault_ubuntu_setup_app {
 
     opens com.hats.medivault_ubuntu_setup_app to javafx.fxml;
     exports com.hats.medivault_ubuntu_setup_app;
-    exports com.hats.medivault_ubuntu_setup_app.tasks;
-    opens com.hats.medivault_ubuntu_setup_app.tasks to javafx.fxml;
+    exports com.hats.medivault_ubuntu_setup_app.task;
+    opens com.hats.medivault_ubuntu_setup_app.task to javafx.fxml;
 }
